@@ -1,5 +1,5 @@
 {
-  "name": "react-day-picker",
+  "name": "@healx/react-day-picker",
   "version": "7.1.9",
   "description": "Flexible date picker component for React",
   "main": "DayPicker.js",
