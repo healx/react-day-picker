@@ -174,7 +174,7 @@ export interface DayPickerInputProps {
 
   classNames?: ClassNames;
 
-  onDayChange?(day: Date, DayModifiers: DayModifiers, details: {isInvalid: boolean, text: string}): undefined;
+  onDayChange?(day: Date | undefined, DayModifiers: DayModifiers, details: {isInvalid: boolean, text: string}): undefined;
   onChange?(e: React.FocusEvent<HTMLDivElement>): undefined;
   onClick?(e: React.FocusEvent<HTMLDivElement>): undefined;
   onFocus?(e: React.FocusEvent<HTMLDivElement>): undefined;
