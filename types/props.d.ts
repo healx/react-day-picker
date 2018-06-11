@@ -21,8 +21,8 @@ export interface NavbarElementProps {
   nextMonth: Date;
   showPreviousButton: boolean;
   showNextButton: boolean;
-  onPreviousClick(callback?: () => void): undefined;
-  onNextClick(callback?: () => void): undefined;
+  onPreviousClick(callback?: () => void): void;
+  onNextClick(callback?: () => void): void;
   dir?: string;
   labels: { previousMonth: string; nextMonth: string };
   localeUtils: LocaleUtils;
@@ -80,61 +80,61 @@ export interface DayPickerProps {
   | React.ComponentClass<NavbarElementProps>
   | React.SFC<NavbarElementProps>;
   numberOfMonths?: number;
-  onBlur?(e: React.FocusEvent<HTMLDivElement>): undefined;
-  onCaptionClick?(month: Date, e: React.MouseEvent<HTMLDivElement>): undefined;
+  onBlur?(e: React.FocusEvent<HTMLDivElement>): void;
+  onCaptionClick?(month: Date, e: React.MouseEvent<HTMLDivElement>): void;
   onDayClick?(
     day: Date,
     modifiers: DayModifiers,
     e: React.MouseEvent<HTMLDivElement>
-  ): undefined;
+  ): void;
   onDayKeyDown?(
     day: Date,
     modifiers: DayModifiers,
     e: React.KeyboardEvent<HTMLDivElement>
-  ): undefined;
+  ): void;
   onDayMouseEnter?(
     day: Date,
     modifiers: DayModifiers,
     e: React.MouseEvent<HTMLDivElement>
-  ): undefined;
+  ): void;
   onDayMouseLeave?(
     day: Date,
     modifiers: DayModifiers,
     e: React.MouseEvent<HTMLDivElement>
-  ): undefined;
+  ): void;
   onDayMouseDown?(
     day: Date,
     modifiers: DayModifiers,
     e: React.MouseEvent<HTMLDivElement>
-  ): undefined;
+  ): void;
   onDayMouseUp?(
     day: Date,
     modifiers: DayModifiers,
     e: React.MouseEvent<HTMLDivElement>
-  ): undefined;
+  ): void;
   onDayTouchEnd?(
     day: Date,
     modifiers: DayModifiers,
     e: React.TouchEvent<HTMLDivElement>
-  ): undefined;
+  ): void;
   onDayTouchStart?(
     day: Date,
     modifiers: DayModifiers,
     e: React.TouchEvent<HTMLDivElement>
-  ): undefined;
-  onFocus?(e: React.FocusEvent<HTMLDivElement>): undefined;
-  onKeyDown?(e: React.KeyboardEvent<HTMLDivElement>): undefined;
-  onMonthChange?(month: Date): undefined;
+  ): void;
+  onFocus?(e: React.FocusEvent<HTMLDivElement>): void;
+  onKeyDown?(e: React.KeyboardEvent<HTMLDivElement>): void;
+  onMonthChange?(month: Date): void;
   onTodayButtonClick?(
     day: Date,
     modifiers: DayModifiers,
     e: React.MouseEvent<HTMLButtonElement>
-  ): undefined;
+  ): void;
   onWeekClick?(
     weekNumber: number,
     days: Date[],
     e: React.MouseEvent<HTMLDivElement>
-  ): undefined;
+  ): void;
   pagedNavigation?: boolean;
   renderDay?(date: Date, modifiers: Modifiers): React.ReactNode;
   renderWeek?(weekNumber: number, week: Date[], month: Date): React.ReactNode;
@@ -161,7 +161,7 @@ export interface DayPickerInputProps {
   inputProps?: object;
 
   formatDate?(date: Date, format: string, locale: string): string;
-  parseDate?(str: string, format: string, locale: string): Date | undefined;
+  parseDate?(str: string, format: string, locale: string): Date | void;
 
   hideOnDayClick?: boolean;
   clickUnselectsDay?: boolean;
@@ -174,10 +174,10 @@ export interface DayPickerInputProps {
 
   classNames?: ClassNames;
 
-  onDayChange?(day: Date | undefined, DayModifiers: DayModifiers, details: {isInvalid: boolean, text: string}): undefined;
-  onChange?(e: React.FocusEvent<HTMLDivElement>): undefined;
-  onClick?(e: React.FocusEvent<HTMLDivElement>): undefined;
-  onFocus?(e: React.FocusEvent<HTMLDivElement>): undefined;
-  onBlur?(e: React.FocusEvent<HTMLDivElement>): undefined;
-  onKeyUp?(e: React.FocusEvent<HTMLDivElement>): undefined;
+  onDayChange?(day: Date | undefined, DayModifiers: DayModifiers, details: {isInvalid: boolean, text: string}): void;
+  onChange?(e: React.FocusEvent<HTMLDivElement>): void;
+  onClick?(e: React.FocusEvent<HTMLDivElement>): void;
+  onFocus?(e: React.FocusEvent<HTMLDivElement>): void;
+  onBlur?(e: React.FocusEvent<HTMLDivElement>): void;
+  onKeyUp?(e: React.FocusEvent<HTMLDivElement>): void;
 }
