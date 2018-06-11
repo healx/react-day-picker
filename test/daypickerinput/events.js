@@ -113,7 +113,11 @@ describe('DayPickerInput', () => {
         const wrapper = mount(<DayPickerInput onDayChange={onDayChange} />);
         const input = wrapper.find('input');
         input.simulate('change', { target: { value: '' } });
-        expect(onDayChange).toHaveBeenCalledWith(undefined, {});
+        expect(onDayChange).toHaveBeenCalledWith(
+          undefined,
+          {},
+          { isInvalid: false }
+        );
       });
       it("should update the input's value if the value is not a valid date", () => {
         const wrapper = mount(<DayPickerInput />);
@@ -126,7 +130,11 @@ describe('DayPickerInput', () => {
         const wrapper = mount(<DayPickerInput onDayChange={onDayChange} />);
         const input = wrapper.find('input');
         input.simulate('change', { target: { value: 'foo' } });
-        expect(onDayChange).toHaveBeenCalledWith(undefined, {});
+        expect(onDayChange).toHaveBeenCalledWith(
+          undefined,
+          {},
+          { isInvalid: true }
+        );
       });
       it("should update the input's value and the displayed month", () => {
         const wrapper = mount(<DayPickerInput />);
@@ -166,6 +174,7 @@ describe('DayPickerInput', () => {
           selected: true,
           disabled: true,
         });
+        expect(onDayChange.mock.calls[0][2]).toEqual({ isInvalid: false });
       });
     });
     describe('keydown', () => {
@@ -247,6 +256,7 @@ describe('DayPickerInput', () => {
           '02/08/2017'
         );
         expect(onDayChange.mock.calls[0][1]).toEqual({ foo: true });
+        expect(onDayChange.mock.calls[0][2]).toEqual({ isInvalid: false });
       });
       it('should hide the day picker when clicking on a day', done => {
         const wrapper = mount(<DayPickerInput />);
@@ -334,10 +344,14 @@ describe('DayPickerInput', () => {
           .find('.DayPicker-Day')
           .at(10)
           .simulate('click');
-        expect(onDayChange).toHaveBeenCalledWith(undefined, {
-          selected: true,
-          foo: true,
-        });
+        expect(onDayChange).toHaveBeenCalledWith(
+          undefined,
+          {
+            selected: true,
+            foo: true,
+          },
+          { isInvalid: false }
+        );
       });
       it('should not call `onDayChange` if the day is disabled', () => {
         const onDayChange = jest.fn();
