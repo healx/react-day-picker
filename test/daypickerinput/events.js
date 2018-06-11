@@ -116,7 +116,7 @@ describe('DayPickerInput', () => {
         expect(onDayChange).toHaveBeenCalledWith(
           undefined,
           {},
-          { isInvalid: false }
+          { isInvalid: false, text: '' }
         );
       });
       it("should update the input's value if the value is not a valid date", () => {
@@ -133,7 +133,7 @@ describe('DayPickerInput', () => {
         expect(onDayChange).toHaveBeenCalledWith(
           undefined,
           {},
-          { isInvalid: true }
+          { isInvalid: true, text: 'foo' }
         );
       });
       it("should update the input's value and the displayed month", () => {
@@ -174,7 +174,10 @@ describe('DayPickerInput', () => {
           selected: true,
           disabled: true,
         });
-        expect(onDayChange.mock.calls[0][2]).toEqual({ isInvalid: false });
+        expect(onDayChange.mock.calls[0][2]).toEqual({
+          isInvalid: false,
+          text: '2015-12-20',
+        });
       });
     });
     describe('keydown', () => {
@@ -256,7 +259,10 @@ describe('DayPickerInput', () => {
           '02/08/2017'
         );
         expect(onDayChange.mock.calls[0][1]).toEqual({ foo: true });
-        expect(onDayChange.mock.calls[0][2]).toEqual({ isInvalid: false });
+        expect(onDayChange.mock.calls[0][2]).toEqual({
+          isInvalid: false,
+          text: '2017-2-8',
+        });
       });
       it('should hide the day picker when clicking on a day', done => {
         const wrapper = mount(<DayPickerInput />);
@@ -350,7 +356,7 @@ describe('DayPickerInput', () => {
             selected: true,
             foo: true,
           },
-          { isInvalid: false }
+          { isInvalid: false, text: '' }
         );
       });
       it('should not call `onDayChange` if the day is disabled', () => {
